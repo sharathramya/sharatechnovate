@@ -85,24 +85,23 @@
             .a-title, .a-second-title {
                 font-size: 4vw;
             }
-            /* .a-title {
+            .a-second-title p {
+                font-size: 2vw;
+                text-align: center;
+            }
+            .a-title {
                 color: transparent;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 background-image: conic-gradient( rgb(201, 69, 69));
                 pointer-events: none;
                 filter: drop-shadow(2px 4px 6px black);
-                text-align: center;
-                mix-blend-mode: difference;
-                font-size: 1.7vw;
-                font-weight: 700;
-                position: relative;
-                z-index: 2;
-                margin: 2vh 0;
-            } */
-            .a-second-title p {
-                font-size: 2vw;
-                text-align: center;
+            }
+            .titlep1{
+                background-image: conic-gradient(blue);
+            }
+            .titlep2{
+                background-image: conic-gradient(red,green);
             }
         }
         @media (max-width: 600px) {
@@ -110,21 +109,6 @@
                 font-size: 4vw;
                 margin: 4vh 0;
             }
-            /* .a-title {
-                color: transparent;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-image: conic-gradient( rgb(201, 69, 69));
-                pointer-events: none;
-                filter: drop-shadow(2px 4px 6px black);
-                text-align: center;
-                mix-blend-mode: difference;
-                font-size: 1.7vw;
-                font-weight: 700;
-                position: relative;
-                z-index: 2;
-                margin: 2vh 0;
-            } */
             .a-second-title {
                 font-size: 7vw;
                 margin-top: 5vh;
@@ -132,6 +116,20 @@
             .a-second-title p {
                 text-align: center;
                 font-size: 4vw;
+            }
+                        .a-title {
+                color: transparent;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-image: conic-gradient( rgb(201, 69, 69));
+                pointer-events: none;
+                filter: drop-shadow(2px 4px 6px black);
+            }
+            .titlep1{
+                background-image: conic-gradient(blue);
+            }
+            .titlep2{
+                background-image: conic-gradient(red,green);
             }
             canvas {
                 height: 100%;
@@ -146,7 +144,7 @@
 <body>
 
     <section id='container'>
-         <h1 class='a-title'>
+         <h1 class='a-title title0'>
             We train and shape you to meet industry standards <br> 
             Technical Proficiency - Practical Skills - Workplace Readiness -  Adaptability
         </h1>
@@ -154,7 +152,7 @@
             <p class="p1">Where Passion Meets Profession</p>
             <!-- <p class='a-title'>We are industry experts with great expertise in practical training.</p> -->
             <p class="p2">We Provide Industry-Standard Practical Training</p>
-            <p class="p2">Learners will learn by hands-on experience</p>
+            <p class="p2">Learners by hands-on experience</p>
         </h1>
         <p class='a-title titlep1'>We are industry experts with great expertise in practical training <br>
             <span class='a-title titlep2' style="scale: 2;">Move the cursor  to see the magic</span>
