@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShaRa Technovate</title>
+     <link rel="shortcut icon" href="./favlogo.jpeg" type="image/x-icon">
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+
+        /* Base Styles & Full-Page Scroll Setup */
+        html,body{
+            overflow-x: hidden; /* Prevent horizontal scroll from off-screen animations */
+            scroll-behavior: smooth; /* Smooth scrolling for navigation links */
+            /* CSS Scroll Snap for full-page section snapping */
+            scroll-snap-type: y mandatory; /* Ensures sections snap into place */
+        }
+        .navbar {
+            height: 10vh;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: #222;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        z-index: 9999;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            font-size: x-large;
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #ff8c00; /* Your accent color */
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        /* Footer Section */
+        .footer {
+            height: auto; /* Footer does not need to be 100vh, but will still snap as last section */
+            background-color: #222;
+            color: #eee;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 1.2em;
+            scroll-snap-align: end; /* Snap to the end of the viewport */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar .logo {
+                font-size: 1.5em;
+            }
+            .nav-links {
+            position: fixed;
+            top: 60px; /* navbar height */
+            right: 0;
+            background: #222;
+            flex-direction: column;
+            width: 220px;
+            padding: 1rem;
+            display: none;
+            border-radius: 0 0 0 8px;
+            }
+
+            .nav-links.active {
+            display: flex;
+            }
+
+            .menu-toggle {
+            display: block;
+            color: #fff;
+            }
+        }
+        /* *Course Section */
+        section {
+            width: 100%; 
+            min-height: 90vh;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: relative; 
+            overflow: hidden;
+            transition: background 0.5s;
+        }
+        section.courses { 
+            background: #0a2540; 
+            color: #fff; 
+        }
+        section.courses ul{
+            list-style: none;
+            /* text-align: center; */
+            /* margin-left: 30px; */
+            line-height: 1.5em;
+        }
+        .columns {
+            display: grid; 
+            grid-template-columns: repeat(1, 1fr); 
+            gap: 24px; 
+            margin-top: 30px;
+        }
+        @media (min-width: 700px) { 
+            .columns { 
+                grid-template-columns: repeat(5, 1fr); 
+            } 
+        }
+        .card {
+            background: rgba(35,35,43,0.85); 
+            border-radius: 12px; 
+            padding: 32px 16px; 
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+            min-height: 140px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            color: inherit;
+        }
+        .card h2, .card h3 { 
+            margin-bottom: 12px; 
+            font-size: 1.2rem; 
+            color: #60a5fa; 
+        }
+        .card p { 
+            font-size: 1.1rem; 
+            color: inherit; 
+        }
+        .from-right { transform: translateX(80px); }
+        .from-right.visible { opacity: 1; transform: translateX(0); }
+        .from-right.out { opacity: 0; transform: translateX(80px); }
+        .from-left { transform: translateX(-80px); }
+        .from-left.visible { opacity: 1; transform: translateX(0); }
+        .from-left.out { opacity: 0; transform: translateX(-80px); }
+        .from-bottom { transform: translateY(80px); }
+        .from-bottom.visible { opacity: 1; transform: translateY(0); }
+        .from-bottom.out { opacity: 0; transform: translateY(80px); }
+
+        .video-placeholder {
+            background: #374151; border-radius: 8px; height: 100px;
+            display: flex; align-items: center; justify-content: center;
+            color: #a3a3a3; font-size: 1rem;
+        }
+
+        /* Full-Screen Section Base Styles */
+        .full-screen-section {
+            height: 100vh; /* Each section takes full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative; /* For content positioning and smoke effect */
+            padding-top: 80px; /* Account for fixed navbar height */
+            box-sizing: border-box; /* Include padding in height */
+            scroll-snap-align: start; /* Snap to the start of each section */
+            overflow: hidden; /* Crucial for containing animations and smoke particles */
+        }
+
+        
+
+        /* Generic Section Styling */
+        .section {
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.5s ease;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+        }
+
+        .section:nth-of-type(even) { /* Alternating background colors */
+            background-color: #eef5f9;
+        }
+
+        .section h2 {
+            font-size: 3em;
+            margin-bottom: 50px;
+            color: #222;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* Active state for h2 */
+        .section.active h2 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Expertise Section (Loads from Right) */
+        .expertise-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .expertise-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            flex: 1 1 calc(20% - 30px); /* 5 columns, with gap */
+            min-width: 220px;
+            max-width: 250px;
+            text-align: center;
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateX(100px); /* Start off-screen right */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* Active state for expertise items */
+        .section.active .expertise-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Durations Section (Loads from Bottom) */
+        .durations-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            width: 100%;
+            max-width: 700px; /* Limit width for readability */
+        }
+
+        .durations-list li {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateY(50px); /* Start off-screen bottom */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* Active state for duration list items */
+        .section.active .durations-list li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Review Videos Section (Loads from Left) */
+        .review-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .review-video-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            flex: 1 1 calc(20% - 30px); /* 5 columns, with gap */
+            min-width: 220px;
+            max-width: 250px;
+            text-align: center;
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateX(-100px); /* Start off-screen left */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* Active state for review video items */
+        .section.active .review-video-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .review-video-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-video-item p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .review-video-item a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px; /* Pill-shaped button */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+        }
+
+        .review-video-item a:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .section h2 {
+                font-size: 2.5em;
+            }
+            .expertise-item, .review-video-item {
+                flex: 1 1 calc(33.33% - 30px); /* 3 columns on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section h2 {
+                font-size: 2em;
+            }
+            .expertise-item, .review-video-item {
+                flex: 1 1 calc(50% - 30px); /* 2 columns on smaller screens */
+            }
+            .durations-list li {
+                font-size: 1.1em;
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            .expertise-item, .review-video-item {
+                flex: 1 1 90%; /* 1 column on very small screens */
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav id="home" class="navbar">
+        <div class="logo">
+            <img class="logoo" src="./CompanyLogo.png" alt="logo" height="80px">
+            <!-- <p>&nbsp; ShaRa Technovate</p> -->
+        </div>
+        <div class="menu-toggle">&#9776;</div>
+        <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <iframe id="home" src="./landing.html" frameborder="0" style=" height:100vh; width:100%"></iframe>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="section-content from-right">
+        <h2 style="text-align: center;">Availability of Courses</h2>
+            <div class="columns">
+                <div class="card">
+                    <h2>Java Fullstack Developer</h2>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>CSS Framework</li>
+                        <li>JavaScript DOM</li>
+                        <li>Java SE</li>
+                        <li>Java EE</li>
+                        <li>Database(SQL)</li>
+                        <li>Employability Skills</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Web Developer</h2>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>CSS Framework</li>
+                        <li>JavaScript</li>
+                        <li>React/Angular</li>
+                        <li>API</li>
+                        <li>Database(No-SQL/SQL)</li>
+                        <li>Employability Skills</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>CAD-Driven Innovation & Simulation</h2>
+                    <ul>
+                        <li>Technical Drawing for Manufacturing</li>
+                        <li>Precision Design Standards (GD&T)</li>
+                        <li>Technical Drawing Interpretation Skills</li>
+                        <li>Design Tools</li>
+                        <li>Design Validation through Simulation</li>
+                        <li>Professional Readiness & Soft Skills</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Data Engineering Essentials</h2>
+                    <ul>
+                        <li>Database Modeling & Schema Design</li>
+                        <li>Core Data Manipulation Techniques (CRUD)</li>
+                        <li>Efficient Query Writing & Optimization</li>
+                        <li>Professional Readiness & Soft Skills</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Python Fullstack Developer</h2>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Flask/DJango</li>
+                        <li>Core Python</li>
+                        <li>PiP</li>
+                        <li>Multiple Projects</li>
+                        <li>Database</li>
+                        <li>Employability Skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duration Section -->
+     <section class="durations" id="durations">
+    <div class="section-content from-bottom">
+        <h2 style="text-align: center;">Duration of Courses</h2>
+      <div class="columns">
+        <div class="card"><h3>Duration Duration Duration Duration</h3><p>6 Months</p></div>
+        <div class="card"><h3>Duration</h3><p>6 Months</p></div>
+        <div class="card"><h3>Duration</h3><p>4 Months</p></div>
+        <div class="card"><h3>Duration</h3><p>5 Months</p></div>
+        <div class="card"><h3>Duration</h3><p>3 Months</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews" id="reviews">
+      <div class="section-content from-left">
+        <h2 style="text-align: center;">Review left by out Students</h2>
+      <div class="columns">
+        <div class="card"><div class="video-placeholder">Review Video 1 Review Video 1 Review Video 1Review Video 1</div></div>
+        <div class="card"><div class="video-placeholder">Review Video 2 </div></div>
+        <div class="card"><div class="video-placeholder">Review Video 3 </div></div>
+        <div class="card"><div class="video-placeholder">Review Video 4 </div></div>
+        <div class="card"><div class="video-placeholder">Review Video 5 </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-content from-left">
+      <div class="columns">
+        <div class="card"><div class="about">About us 1 About us 1 About us 1 About us 1</div></div>
+        <div class="card"><div class="about">About us 2</div></div>
+        <div class="card"><div class="about">About us 3</div></div>
+        <div class="card"><div class="about">About us 4</div></div>
+        <div class="card"><div class="about">About us 5</div></div>
+      </div>
+    </div>
+  </section>
+
+    <footer id="contact" class="footer">
+        <p>© 2025 ShaRa Technovate. All rights reserved.</p>
+        <p>Address: #900 3rd Floor, 3rd Main Road, 1st Block, Near Navarang Circle, Rajajinagar, Bengaluru, Karnataka, India | Email: iamsharathkm@gmail.com<!-- info@sharatechnovate.com--> | Phone: +91 80950 01997</p>
+    </footer>
+        <script>
+        // Section Content Reveal on Scroll with Direction
+        let lastScrollY = window.scrollY;
+        function revealSections() {
+        const currScrollY = window.scrollY;
+        const direction = currScrollY > lastScrollY ? 'down' : 'up';
+        lastScrollY = currScrollY;
+
+        document.querySelectorAll('section:not(.hero):not(.footer-section) .section-content').forEach(el => {
+            const rect = el.parentElement.getBoundingClientRect();
+            const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.2;
+            el.classList.remove('visible', 'out');
+            if (inView) {
+            el.classList.add('visible');
+            } else {
+            if (direction === 'up') {
+                el.classList.add('out');
+            }
+            }
+        });
+        }
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
+        revealSections();
+    </script>
+</body>
+</html>
