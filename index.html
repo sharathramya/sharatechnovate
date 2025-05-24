@@ -87,14 +87,15 @@
             }
             .nav-links {
             position: fixed;
-            top: 60px; /* navbar height */
+            top: 75px; /* navbar height */
             right: 0;
             background: #222;
             flex-direction: column;
-            width: 220px;
+            width: fit-content;
             padding: 1rem;
             display: none;
             border-radius: 0 0 0 8px;
+            text-align: end;
             }
 
             .nav-links.active {
@@ -372,7 +373,7 @@
 
 </head>
 <body>
-    <nav id="home" class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img class="logoo" src="./CompanyLogo.png" alt="logo" height="80px">
             <!-- <p>&nbsp; ShaRa Technovate</p> -->
@@ -380,13 +381,28 @@
         <div class="menu-toggle">&#9776;</div>
         <ul class="nav-links">
             <li><a href="./index.html">Home</a></li>
-            <li><a href="#courses">Courses</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#courses">Training</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    <iframe id="home" src="./landing.html" frameborder="0" style=" height:100vh; width:100%"></iframe>
+    <iframe src="./landing.html" frameborder="0" style=" height:100vh; width:100%"></iframe>
+
+    <!-- Services Section -->
+     <section class="durations" id="services">
+    <div class="section-content from-bottom">
+        <h2 style="text-align: center;">Duration of Courses</h2>
+      <div class="columns">
+        <div class="card"><h3>Services Services Services Services </h3><p>1</p></div>
+        <div class="card"><h3>Services</h3><p>6 </p></div>
+        <div class="card"><h3>Services</h3><p>4 </p></div>
+        <div class="card"><h3>Services</h3><p>5 </p></div>
+        <div class="card"><h3>Services</h3><p>3 </p></div>
+      </div>
+    </div>
+  </section>
 
     <!-- Courses Section -->
     <section class="courses" id="courses">
@@ -526,5 +542,13 @@
         window.addEventListener('load', revealSections);
         revealSections();
     </script>
+    <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 </body>
 </html>
