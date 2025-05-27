@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShaRa Technovate</title>
-    <link rel="shortcut icon" href="./favlogo.jpeg" type="image/x-icon">
+    <!-- <title>ShaRa Technovate</title>
+    <link rel="shortcut icon" href="./favlogo.jpeg" type="image/x-icon"> -->
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         html, body {
             width: 100%;
             height: 100%;
-            min-height: 100vh;
-        }
-        body {
-            width: 100vw;
             min-height: 100vh;
             overflow: auto;
         }
@@ -31,42 +28,34 @@
             position: relative;
         }
         .a-title {
-            color: transparent;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: conic-gradient( rgb(201, 69, 69));
+            color: aliceblue;
             pointer-events: none;
-            filter: drop-shadow(2px 4px 6px black);
             text-align: center;
             mix-blend-mode: difference;
             font-size: 1.7vw;
             font-weight: 700;
             position: relative;
             z-index: 2;
-            margin: 2vh 0;
-        }
-        .titlep1{
-            background-image: conic-gradient(blue);
-        }
-        .titlep2{
-            background-image: conic-gradient(red,green);
+            opacity: 0.5;
         }
         .a-second-title {
             pointer-events: none;
-            /* -webkit-text-stroke: 1.1px rgb(228, 220, 220); */
             color: aliceblue;
             letter-spacing: 1.125px;
-            font-size: 3.1vw;
-            mix-blend-mode: color-dodge;
+            font-size: 5.1vw;
+            mix-blend-mode: difference;
             position: relative;
             z-index: 2;
             text-align: center;
+            opacity: 1;
         }
-        .p1 {
-            font-size: 1.5vw;
-            margin: 0.5em 0;
+        .p0{
+            font-size: 3.5vw;
+        }
+        .passion {
+            font-size: 2.5vw;
             text-align: end;
-            -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+            opacity: 0.5;
         }
         .p2 {
             font-size: 1.9vw;
@@ -83,57 +72,37 @@
         }
         /* Responsive adjustments */
         @media (max-width: 900px) {
-            .a-title, .a-second-title {
-                font-size: 4vw;
-            }
-            .a-second-title p {
-                font-size: 2vw;
-                text-align: center;
-            }
             .a-title {
-                color: transparent;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-image: conic-gradient( rgb(201, 69, 69));
-                pointer-events: none;
-                filter: drop-shadow(2px 4px 6px black);
-            }
-            .titlep1{
-                background-image: conic-gradient(blue);
-            }
-            .titlep2{
-                background-image: conic-gradient(red,green);
-            }
-        }
-        @media (max-width: 600px) {
-            .a-title, .a-second-title {
                 font-size: 4vw;
                 margin: 4vh 0;
             }
             .a-second-title {
-                font-size: 7vw;
-                margin-top: 5vh;
+                font-size: 10vw;
+                margin-top: 10px;
+                opacity: 1;
             }
             .a-second-title p {
-                text-align: center;
                 font-size: 4vw;
             }
-            .a-title {
-                /* color: transparent; */
-                /* -webkit-background-clip: text; */
-                /* -webkit-text-fill-color: transparent; */
-                /* background-image: conic-gradient( rgb(201, 69, 69)); */
-                pointer-events: none;
-                /* filter: drop-shadow(2px 4px 6px black); */
+            .passion{
+                margin-bottom: 20px;
+                animation: slideFromRight 1s ease-out forwards
             }
-            .titlep1{
-                background-image: conic-gradient(blue);
+            @keyframes slideFromRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
             }
-            .titlep2{
-                background-image: conic-gradient(red,green);
+            .p2{
+                line-height: 2.5vh;
             }
-            canvas {
-                height: 100%;
+            .p0{
+                scale: 2;
             }
         }
         canvas {
@@ -145,18 +114,18 @@
 <body>
 
     <section id='container'>
-         <h1 class='a-title title0'>
+         <h1 class='a-title'>
             We train and shape you to meet industry standards <br> 
-            Technical Proficiency - Practical Skills - Workplace Readiness -  Adaptability
+            &nbsp; &nbsp;  &nbsp;Technical Proficiency &nbsp; - &nbsp; Practical Skills &nbsp; - &nbsp; Workplace Readiness &nbsp; - &nbsp;  Adaptability
         </h1>
-        <h1 class='a-second-title'>Welcome to ShaRa Technovate 
-            <p class="p1">Where Passion Meets Profession</p>
+        <h1 class='a-second-title'><p class="p0">Welcome to</p>ShaRa Technovate 
+            <p class="passion">Where Passion Meets Profession</p>
             <!-- <p class='a-title'>We are industry experts with great expertise in practical training.</p> -->
-            <p class="p2">We Provide Industry-Standard Practical Training</p>
-            <p class="p2">Learners by hands-on experience</p>
+            <p class='p2'>We are industry experts with  <i>great expertise</i> in <i>Practical Training</i></p>
+            <p class="p2">We Provide <i>Industry-Standard</i> Practical Training</p>
         </h1>
-        <p class='a-title titlep1'>We are industry experts with great expertise in practical training <br>
-            <span class='a-title titlep2' style="scale: 2;">Move the cursor  to see the magic</span>
+        <p class="a-title">Learner by <i>hands-on Experience</i></p>
+            <!-- <p class='a-title titlep2' style="scale: 0.6;">Move the cursor  to see the magic</p> -->
         </p>
         <canvas></canvas>
     </section>
