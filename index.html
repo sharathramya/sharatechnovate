@@ -86,82 +86,6 @@
         }
         /* Nav Bar CSS Ended */
 
-        /* General CSS for cards */
-        section {
-            width: 100%; 
-            min-height: 70vh;
-            position: relative; 
-            overflow: hidden;
-            transition: background 0.5s;
-            border-radius: 5px;
-        }
-        .h2head{
-            font-size: 3.3em;
-            text-align: center;
-        }
-        @media (max-width:768px){
-            .h2head{
-                font-size: 2.2em;
-            }
-        }
-        .columns {
-            display: flex;
-            flex-direction: row;
-            gap: 24px;
-            margin-top: 30px;
-            width: 100%;
-            box-sizing: border-box;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            flex-wrap: nowrap;
-            padding-bottom: 10px;
-        }
-        .columns::-webkit-scrollbar {
-            display: none;
-        }
-        .columns {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .card, .ofcard, .trcard {
-            min-width: 280px;
-            max-width: 350px;
-            flex: 0 0 auto;
-        }
-        /* --- END CORRECTED --- */
-
-        .card {
-            border-radius: 12px; 
-            padding: 32px 16px; 
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
-            min-height: 140px;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center;
-        }
-        .card h2, .card h3 { 
-            margin-bottom: 12px; 
-            font-size: 1.2rem; 
-        }
-        .card p { 
-            font-size: 1.1rem; 
-            color: inherit; 
-        }
-        @media (max-width: 768px) {
-            .section h2 {
-                font-size: 2em;
-            }
-        }
-        @media (max-width: 480px) {
-            .section h2 {
-                font-size: 1.8em;
-                margin-bottom: 30px;
-            }
-        }
-        /* General CSS for cards ended */
-
         /* we offer Section CSS */
         /* Only styles for the sliding section */
     .curtain-section {
@@ -223,7 +147,7 @@
       position: relative;
       pointer-events: auto;
     }
-    .columns {
+    .weoffer .columns {
       display: flex;
       flex-direction: row;
       gap: 32px;
@@ -237,7 +161,7 @@
       border-radius: 12px;
       padding: 24px 16px;
       text-align: center;
-      background-color: rgba(124, 112, 112, 0.199);
+      background-color: #e3e3e3;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.304);
       min-width: 340px;
       max-width: 360px;
@@ -255,12 +179,14 @@
       color: #1e2d5f; 
       /* color: #85380c; */
       margin-top: 12px;
+      margin-bottom: 10px;
       font-size: 1.8rem;
     }
     .ofcard p {
       font-size: 1.4rem;
       font-weight: bold;
-      color: rgb(253, 253, 253);
+      /* color: #1e2d5f; */
+      letter-spacing: 0.1rem;
       margin-top: 0.5em;
     }
     .servimg {
@@ -272,27 +198,7 @@
       margin-bottom: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.571);
     }
-    @media (max-width: 1200px) {
-      .ofcard {
-        min-width: 260px;
-        max-width: 300px;
-        min-height: 400px;
-      }
-      .servimg {
-        max-width: 210px;
-        height: 120px;
-      }
-    }
-    @media (max-width: 900px) {
-      .curtain-content {
-        font-size: 1.1em;
-      }
-      .servimg {
-        max-width: 300px;
-        height: 400px;
-      }
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .curtain-content {
         padding: 12px 2vw;
       }
@@ -315,14 +221,14 @@
         max-width: 300px;
         height: 350px;
       }
-      .columns {
+      .weoffer .columns {
         gap: 8px;
       }
     }
         /* we offer Section CSS ended */
 
         /* Training Section CSS */
-        .trainingsection {
+    .trainingsection {
       height: 100vh;
       width: 100vw;
       display: flex;
@@ -367,8 +273,9 @@
       min-width: 320px;
       max-width: 350px;
       width: 25vw;
-      min-height: 320px;
-      max-height: 80vh;
+      height: 40vh;
+      /* min-height: 320px; */
+      /* max-height: 80vh; */
       padding: 28px 24px 30px 24px;
       box-sizing: border-box;
       opacity: 0.7;
@@ -432,7 +339,7 @@
     /* Desktop: Use previous carousel layout */
     .trcard.left2 {
       left: 8vw;
-      top: 42vh;
+      top: 32vh;
       transform: translate(0, -55%) scale(0.92);
       z-index: 1;
       opacity: 0.6;
@@ -440,7 +347,7 @@
     }
     .trcard.left1 {
       left: 8vw;
-      top: 58vh;
+      top: 68vh;
       transform: translate(0, -45%) scale(0.98);
       z-index: 2;
       opacity: 0.8;
@@ -449,7 +356,7 @@
     .trcard.right1 {
       right: 8vw;
       left: auto;
-      top: 42vh;
+      top: 32vh;
       transform: translate(0, -55%) scale(0.98);
       z-index: 2;
       opacity: 0.8;
@@ -458,7 +365,7 @@
     .trcard.right2 {
       right: 8vw;
       left: auto;
-      top: 58vh;
+      top: 68vh;
       transform: translate(0, -45%) scale(0.92);
       z-index: 1;
       opacity: 0.6;
@@ -473,6 +380,7 @@
       opacity: 1;
       box-shadow: 0 14px 60px 0 rgba(40,60,120,0.18), 0 2px 10px #b5c6e0;
       pointer-events: auto;
+      height: auto;
     }
     .trcard.left2 ul,
     .trcard.left1 ul,
@@ -529,29 +437,29 @@
         pointer-events: none;
       }
       .trainingsection>.h2head {
-        /* margin-top: -35px; */
-        font-size: 1.6rem;
+        margin-top: -30px;
+        font-size: 1.8rem;
       }
       .mobile-row {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         width: 100vw;
-        height: 20vh;
+        height: 10vh;
         position: absolute;
         left: 0;
         pointer-events: none;
       }
       .mobile-row.top {
-        top: 15vh;
+        top: 23vh;
       }
       .mobile-row.bottom {
-        bottom: 5vh;
+        bottom: 0vh;
       }
       .mobile-center {
         position: absolute;
         left: 50vw;
-        top: 50vh;
+        top: 55vh;
         transform: translate(-50%, -50%);
         width: 92vw;
         z-index: 10;
@@ -587,15 +495,16 @@
       }
       .trcard.mobile-top,
       .trcard.mobile-bottom {
+        /* background-color: red; */
         width: 44vw !important;
         max-width: 300px !important;
         min-width: 0 !important;
-        min-height: 140px !important;
+        max-height: 80px !important;
         margin: 0 0.5vw !important;
         box-shadow: 0 2px 12px #b5c6e0;
         z-index: 1 !important;
         pointer-events: auto;
-        height: 60vw;
+        height: 40vw;
       }
       /* TOP: techname, then image */
       .trcard.mobile-top ul {
@@ -635,18 +544,100 @@
         /* Training CSS Ended */
 
         /* duration Section CSS */
-        .durations{
-            background-color: #8f9497e4;
+        .durations {
+            width: 100vw;
+            height: 60vh;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            margin: 0 auto;
+            text-align: center;
         }
+        /* .durationsection {
+            padding: 40px 0;
+        } */
+        .durations .h2head {
+            color: #333;
+            /* background-color: red; */
+            padding-top: 30px;
+            font-size: 2rem;
+        }
+        .durations .columns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); */
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .durcard {
+            width: 15%;
+            height: 30vh;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-height: 150px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .durcard h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            min-height: 3em;
+        }
+        .durcard img {
+            transition: all 0.3s ease;
+            width: 90%;
+            height: 20vh;
+            align-self: center;
+
+        }
+        .opa{
+            transition: all 0.3s ease;
+            opacity: 0;
+            margin-bottom: 10px;
+        }
+        .opaa{
+            /* margin-bottom: 20px; */
+        }
+        .durcard:hover .opa {
+            /* color: orange; */
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        /* Responsive adjustments */
+        /* @media (max-width: 768px) {
+            .durcard {
+                width: 140px;
+                min-height: 130px;
+                padding: 15px;
+            }
+        } */
         @media (max-width: 768px) {
             .durations .columns {
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 10px;
+                align-self: center;
+                overflow: auto;
             }
-            .durations .durcard {
-                width: 90%;
-                max-width: none;
-                max-height: max-content;
+            .durcard {
+                /* width: calc(50% - 15px); Two cards per row, accounting for gap */
+                width: 90vw;
+                margin-left: 2vw;
+                min-height: auto;
+                align-self: center;
+                overflow: auto;
+                padding: 10px;
+            }
+            .durcard h3 {
+                font-size: 1rem;
+                min-height: 2.5em;
             }
         }
         /* duration Section CSS ended */
@@ -706,7 +697,7 @@
         <div class="menu-toggle">&#9776;</div>
         <ul class="nav-links">
             <li><a href="./index.html">Home</a></li>
-            <li><a href="#we-offer">What We Offer</a></li>
+            <li><a href="#we-offer">Designed for U</a></li>
             <li><a href="#training">Training</a></li>
             <li><a href="#reviews">Reviews</a></li>
             <li><a href="#about">About</a></li>
@@ -737,25 +728,24 @@
                     <p>From concept to reality — we design, simulate, and refine products with precision engineering and innovation</p>
                 </div>
                 <div class="ofcard card">
-                  <img class="servimg" src="./images/services-images/Software Training.webp" alt="">
-                  <h3>IT & Mechcanical Training</h3>
+                    <img class="servimg" src="./images/services-images/Software Training.webp" alt="">
+                    <h3>IT & Mechcanical Training</h3>
                   <p>Empowering individuals and teams with industry-relevant skills through hands-on, expert-led training programs</p>
                 </div>
             <div class="ofcard card">
-              <img class="servimg" src="./images/services-images/app-development.avif" alt="">
-              <h3>App Design & Development</h3>
+                <img class="servimg" src="./images/services-images/app-development.avif" alt="">
+                <h3>App Design & Development</h3>
               <p>Transforming ideas into intuitive, high-performance mobile apps that engage and deliver</p>
             </div>
             <div class="ofcard card">
-              <img class="servimg" src="./images/services-images/In-House Training.jpg" alt="">
-              <h3>In-House Training</h3>
+                <img class="servimg" src="./images/services-images/In-House Training.jpg" alt="">
+                <h3>In-House Training</h3>
               <p>Customized training at your place — equipping your workforce with practical knowledge for real-world success</p>
             </div>
           </div>
         </div>
       </section>
     </div>
-  </section>
   <!-- Script for We Offer -->
   <script>
     // Curtain effect
@@ -872,6 +862,8 @@
       setTimeout(startAutoCarousel, 200);
     });
   </script>
+  </section>
+
 <!-- End of We Offer Sliding Section (only this section is affected by the CSS/JS below) -->
 
 <!-- What we offer Section ended-->
@@ -952,7 +944,6 @@
         </div>
       </div>
     </div>
-  </section>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const cards = Array.from(document.querySelectorAll(".training .trcard"));
@@ -1063,22 +1054,62 @@
       });
     });
   </script>
+  </section>
+
 <!-- Training section completed -->
 
 
 <!-- Duration Section -->
-    <!-- <section class="durations" id="durations">
+    <section class="durations" id="durations">
         <div class="section-content durationsection from-bottom">
             <h2 class="h2head">Duration of Courses</h2>
             <div class="columns">
-                <div class="durcard card"><h3>Duration Duration Duration Duration</h3><p>6 Months</p></div>
-                <div class="durcard card"><h3>Duration</h3><p>6 Months</p></div>
-                <div class="durcard card"><h3>Duration</h3><p>4 Months</p></div>
-                <div class="durcard card"><h3>Duration</h3><p>5 Months</p></div>
-                <div class="durcard card"><h3>Duration</h3><p>3 Months</p></div>
+                <div class="durcard card" data-duration="4 months">
+                    <h3 class="opa">Java Fullstack Developer</h3>
+                    <img src="./images/training-images/javafullstackdeveloper.jpg" alt="">
+                    <p class="opa"> 4 Months</p>
+                </div>
+                <div class="durcard card" data-duration="2 months">
+                    <h3 class="opa">Web Developer</h3>
+                    <img src="./images/training-images/webdevelopmenttraining.jpg" alt="">
+                    <p class="opa"> 2 Months</p>
+                </div>
+                <div class="durcard card" data-duration="1 month">
+                    <h3 class="opa opaa">CAD-Driven <br> Innovation & Simulation</h3>
+                    <img src="./images/training-images/CAD-Simulation.jpg" alt="">
+                    <p class="opa">Duration 1 Months</p>
+                </div>
+                <div class="durcard card" data-duration=" 2 months">
+                    <h3 class="opa">Data Engineering Essentials</h3>
+                    <img src="./images/training-images/Data-Engineering-Essentials.webp" alt="">
+                    <p class="opa"> 2 Months</p>
+                </div>
+                <div class="durcard card" data-duration="  4 months">
+                    <h3 class="opa">Python Fullstack Developer</h3>
+                    <img src="./images/training-images/Python-Fullstack-Developer.jpg" alt="">
+                    <p class="opa"> 4 Months</p>
+                </div>
             </div>
         </div>
-    </section> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.durcard');
+            cards.forEach(card => {
+                const duration = card.getAttribute('data-duration');
+                const p = card.querySelector('p');
+                
+                card.addEventListener('mouseenter', function() {
+                    p.textContent = duration;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    p.textContent = 'Duration';
+                });
+            });
+        });
+    </script>
+    </section>
 <!-- Duration Section ended-->
 
 
@@ -1114,36 +1145,11 @@
 
     <footer id="contact" class="footer" >
         <p style="color: #eee;font-size: 1.4rem;">© 2025 <a href="./index.html" style="text-decoration: underline;color:#eee;">ShaRa Technovate</a>. &nbsp; All rights reserved.</p>
-        <p style="color: #eee;font-size: 1.4rem; line-height: 2rem;">Address: #900 3rd Floor, 3rd Main Road, 1st Block, Near Navarang Circle, Rajajinagar, Bengaluru, Karnataka, India <br> <br>Mail us on: <a href="mailto:iamsharathkm@gmail.com" style="text-decoration: underline; color: #eee;">iamsharathkm@gmail.com</a> <!-- info@sharatechnovate.com--> | Call us on: <a href="tel:+918095001997" style="color: #eee; text-decoration: underline;">+91 80950 01997</p>
-        <p><a style="text-decoration: underline;color: #eee; font-size: 2.2rem;" href="https://wa.me/918095001997" target="_blank">Chat on WhatsApp</a>
-</p>
+        <p style="color: #eee;font-size: 1.4rem; line-height: 2rem;">Address: #900 3rd Floor, 3rd Main Road, 1st Block, Near Navarang Circle, Rajajinagar, Bengaluru, Karnataka, India <br> <br>Mail : <a href="mailto:iamsharathkm@gmail.com" style="text-decoration: underline; color: #eee;">iamsharathkm@gmail.com</a> <!-- info@sharatechnovate.com--> | Call : <a href="tel:+918095001997" style="color: #eee; text-decoration: underline;">+91 80950 01997</p>
+        <p><a style="text-decoration: underline;color: #eee; font-size: 2.2rem;" href="https://wa.me/918095001997" target="_blank">WhatsApp</a></p>
     </footer>
 
-    <!-- Section Content Reveal on Scroll with Direction -->
-    <script>
-        let lastScrollY = window.scrollY;
-        function revealSections() {
-        const currScrollY = window.scrollY;
-        const direction = currScrollY > lastScrollY ? 'down' : 'up';
-        lastScrollY = currScrollY;
-
-        document.querySelectorAll('section:not(.hero):not(.footer-section) .section-content').forEach(el => {
-            const rect = el.parentElement.getBoundingClientRect();
-            const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.2;
-            el.classList.remove('visible', 'out');
-            if (inView) {
-            el.classList.add('visible');
-            } else {
-            if (direction === 'up') {
-                el.classList.add('out');
-            }
-            }
-        });
-        }
-        window.addEventListener('scroll', revealSections);
-        window.addEventListener('load', revealSections);
-        revealSections();
-    </script>
+    
     <!-- Scitpt for nav Bar -->
     <script>
         const toggle = document.querySelector('.menu-toggle');

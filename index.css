@@ -1,0 +1,16 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+#landing{
+    margin-top: 10vh;
+    height: 90vh;
+    width: 100%;
+}
+#weoffer,#training,#duration,#review,#about,#footer{
+    height: 90vh;
+    width: 100%;
+}
+#review,#footer{
+    background-color: aqua;
+}
